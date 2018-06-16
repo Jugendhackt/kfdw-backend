@@ -9,12 +9,12 @@ router.get('', (request, response) => {
 
         // see https://stackoverflow.com/a/24372831/8496913
 
-        let sql = 'SELECT trash_bins.*, 111.111 * ' +
+        let sql = 'SELECT trash_bins.*, ROUND(111.111 * ' +
         'DEGREES(ACOS(COS(RADIANS(?)) ' +
              '* COS(RADIANS(trash_bins.latitude)) ' +
              '* COS(RADIANS(? - trash_bins.longitude)) ' +
              '+ SIN(RADIANS(?)) ' +
-             '* SIN(RADIANS(trash_bins.latitude)))) AS distance_in_km ' +
+             '* SIN(RADIANS(trash_bins.latitude)))), 6) AS distance_in_km ' +
              'FROM trash_bins ' +
              'HAVING distance_in_km <= ? ' +
              'ORDER BY distance_in_km ASC ' +
