@@ -11,15 +11,15 @@ DatabaseManager.establishConnection().then(() => {
         DatabaseManager.getDatabase().beginTransaction();
 
         // FIXME: The driver does not support prepared statements, yet. Rewrite once it is supported.
-        console.time('import');
-        const rawData = require('./rawData.geo');
-        DatabaseManager.getDatabase().query('TRUNCATE TABLE trash_bins;', err => {
+        const rawData = require('./rawData-hamburg.geo');
+        DatabaseManager.getDatabase().query('-- TRUNCATE TABLE trash_bins;', err => {
             console.log('Truncated table');
             if (err) throw err;
             const sql = 'INSERT INTO trash_bins(trashBinID, latitude, longitude, data) VALUES (null, ?, ?, ?);';
 
             successfulRequests = 0;
 
+            console.time('import');
             for (const entry of rawData.elements) {
                 DatabaseManager.queryPromisify(sql, [
                     entry.lat,
