@@ -3,9 +3,13 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const MainLogger = new (require('./logger'))('Main');
-const ServerLogger = new (require('./logger'))('Server');
-const DatabaseManager = new (require('./database'))
+
+const DatabaseManager = require('./database').getInstance();
+const logger = require('./logger');
+const MainLogger = logger.getInstance('Main');
+const ServerLogger = logger.getInstance('Server');
+
+const TrashcanRouteHandler = require('./routes/trashcan');
 
 MainLogger.log(`${require('../package').name} started at ${new Date().toLocaleTimeString()}`);
 
@@ -27,9 +31,11 @@ app.use((request, response, next) => {
         .header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
 
     // log the request
-    ServerLogger.log(`New request on ${request.path} from ip ${request.ip}`);
+    ServerLogger.log(`New request on ${request.path} from ip ${request.ip} at ${new Date().toLocaleTimeString()}`);
     next();
 });
+
+app.use('/trashcans', TrashcanRouteHandler);
 
 const runningInstance = app.listen(8080, () => {
     ServerLogger.log(`Server is listening on port ${runningInstance.address().port}`);

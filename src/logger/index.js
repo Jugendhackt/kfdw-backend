@@ -1,3 +1,8 @@
+/**
+ * @type Map<string,Logger>
+ */
+const INITALIZED_LOGGERS = new Map();
+
 class Logger {
 
     /**
@@ -5,6 +10,14 @@ class Logger {
      */
     constructor(loggerName) {
         this.loggerName = loggerName;
+    }
+
+    static getInstance(loggerName) {
+        if (!INITALIZED_LOGGERS.has(loggerName)) {
+            INITALIZED_LOGGERS.set(loggerName, new Logger(loggerName));
+        }
+
+        return INITALIZED_LOGGERS.get(loggerName);
     }
 
     doLog(logLevel = 'log', ...message) {

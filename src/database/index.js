@@ -1,9 +1,16 @@
 const mysql = require('mysql');
-const DatabaseLogger = new (require('../logger'))('Database')
+const logger = require('../logger');
+const DatabaseLogger = logger.getInstance('Database');
+
+/**
+ * @type DatabaseManager
+ */
+let INSTANCE = null;
 
 class DatabaseManager {
 
     constructor() {
+        INSTANCE = this;
         this.host = process.env.MYSQL_HOST;
         this.user = process.env.MYSQL_USER;
         this.password = process.env.MYSQL_PASSWORD;
@@ -48,6 +55,14 @@ class DatabaseManager {
                 resolve();
             })
         });
+    }
+
+    static getInstance() {
+        if (INSTANCE === null) {
+            INSTANCE = new DatabaseManager;
+        }
+
+        return INSTANCE;
     }
 
     /**
