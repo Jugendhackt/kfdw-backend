@@ -12,7 +12,11 @@ class Logger {
         this.loggerName = loggerName;
     }
 
+    /**
+     * @param {string} loggerName
+     */
     static getInstance(loggerName) {
+        loggerName = loggerName.charAt(0).toUpperCase() + loggerName.slice(1);
         if (!INITALIZED_LOGGERS.has(loggerName)) {
             INITALIZED_LOGGERS.set(loggerName, new Logger(loggerName));
         }

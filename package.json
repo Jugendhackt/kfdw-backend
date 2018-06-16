@@ -20,8 +20,10 @@
   "homepage": "https://github.com/Jugendhackt/kfdw-backend#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dataurl": "^0.1.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "mysql": "github:mysqljs/mysql"
+    "mysql": "github:mysqljs/mysql",
+    "uuid": "^3.2.1"
   }
 }
