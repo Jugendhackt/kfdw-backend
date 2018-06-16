@@ -1,4 +1,5 @@
 #cdd712 (gelb 1)
 #cdc612 (gelb 2)
 #e9f615 (gelb 3)
+#f6d20e (gelb 4)
 #fdfdfd (weiß)
