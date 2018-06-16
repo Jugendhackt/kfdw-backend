@@ -19,6 +19,11 @@ class Logger {
         this.doLog('warn', message);
     }
 
+    error(...message) {
+        message.unshift('ERROR');
+        this.doLog('error', message);
+    }
+
     log(...message) {
         this.doLog('log', message);
     }

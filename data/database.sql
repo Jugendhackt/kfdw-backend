@@ -1,0 +1,9 @@
+CREATE TABLE `trash_bins` (
+	`trashBinID` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`latitude` FLOAT(10,6) UNSIGNED NOT NULL,
+	`longitude` FLOAT(10,6) UNSIGNED NOT NULL,
+	`data` LONGTEXT NOT NULL COLLATE 'utf8mb4_bin',
+	PRIMARY KEY (`trashBinID`)
+)
+ENGINE=InnoDB
+;
