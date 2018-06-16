@@ -1,2 +1,3 @@
-#cdc612 (gelb)
-#fdfdfd (weiﬂ)
+#cdd712 (gelb 1)
+#cdc612 (gelb 2)
+#fdfdfd (wei√ü)
