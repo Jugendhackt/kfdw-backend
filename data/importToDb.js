@@ -16,7 +16,7 @@ DatabaseManager.establishConnection().then(() => {
         DatabaseManager.getDatabase().query('TRUNCATE TABLE trash_bins;', err => {
             console.log('Truncated table');
             if (err) throw err;
-            const sql = 'INSERT INTO trash_bins(trashBinID, latitude, longitude, data) VALUES (null,?,?,?);';
+            const sql = 'INSERT INTO trash_bins(trashBinID, latitude, longitude, data) VALUES (null, ?, ?, ?);';
 
             successfulRequests = 0;
 
