@@ -1,14 +1,16 @@
+// read sensitive credentials from `.env`
+(require('dotenv').config());
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const MainLogger = new (require('./logger'))('Main');
 const ServerLogger = new (require('./logger'))('Server');
 const DatabaseManager = new (require('./database'))
 
-// read sensitive credentials from `.env`
-(require('dotenv').load());
+MainLogger.log(`${require('../package').name} started at ${new Date().toLocaleTimeString()}`);
 
 // establish database connection
-await DatabaseManager.establishConnection();
+DatabaseManager.establishConnection();
 
 // init webserver
 const app = express();
@@ -30,5 +32,10 @@ app.use((request, response, next) => {
 });
 
 const runningInstance = app.listen(8080, () => {
-    MainLogger.log(`Server is listening on port ${runningInstance.address().port}`);
+    ServerLogger.log(`Server is listening on port ${runningInstance.address().port}`);
+});
+
+process.on('unhandledRejection', (reason, p) => {
+    console.log('Unhandled Rejection at:', p, 'reason:', reason);
+    process.exit(1);
 });
