@@ -11,6 +11,7 @@ const ServerLogger = logger.getInstance('Server');
 
 const TrashRouteHandler = require('./routes/trash');
 const TrashcanRouteHandler = require('./routes/trashcan');
+const ScoreRouteHandler = require('./routes/score');
 
 MainLogger.log(`${require('../package').name} started at ${new Date().toLocaleTimeString()}`);
 
@@ -47,6 +48,7 @@ app.use((request, response, next) => {
 
 app.use('/trashcans', TrashcanRouteHandler);
 app.use('/trash', TrashRouteHandler);
+app.use('/score', ScoreRouteHandler);
 
 const runningInstance = app.listen(8080, () => {
     ServerLogger.log(`Server is listening on port ${runningInstance.address().port}`);

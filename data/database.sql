@@ -3,7 +3,24 @@ CREATE TABLE `trash_bins` (
 	`latitude` FLOAT(10,6) UNSIGNED NOT NULL,
 	`longitude` FLOAT(10,6) UNSIGNED NOT NULL,
 	`data` LONGTEXT NOT NULL COLLATE 'utf8mb4_bin',
-	PRIMARY KEY (`trashBinID`)
+	PRIMARY KEY (`trashBinID`),
+	INDEX `latitude_longitude` (`latitude`, `longitude`)
 )
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `trash` (
+	`trashID` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`imagePath` VARCHAR(65) NOT NULL DEFAULT '0',
+	`latitude` FLOAT(10,6) UNSIGNED NOT NULL DEFAULT '0',
+	`longitude` FLOAT(10,6) UNSIGNED NOT NULL DEFAULT '0',
+	`comment` TINYTEXT NOT NULL DEFAULT '0',
+	`flag` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',
+	`username` VARCHAR(50) NOT NULL,
+	`isDisabled` TINYINT(1) UNSIGNED NULL DEFAULT NULL,
+	PRIMARY KEY (`trashID`)
+)
+COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;

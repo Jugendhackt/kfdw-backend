@@ -17,10 +17,11 @@ router.get('', (request, response) => {
             '+ SIN(RADIANS(?)) ' +
             '* SIN(RADIANS(trash.latitude))))) * 1000, 3) AS distance_in_m ' +
             'FROM trash ' +
+            'WHERE isDisabled = ?' +
             'HAVING distance_in_m <= ? ' +
             'ORDER BY distance_in_m ASC ';
             // 'LIMIT 15;';
-        let parameters = [latitude, longitude, latitude, Number.parseFloat(process.env.DISTANCE_THRESHOLD)];
+        let parameters = [latitude, longitude, latitude, 0, Number.parseFloat(process.env.DISTANCE_THRESHOLD)];
         DatabaseHandler.getDatabase().query(sql, parameters, (error, results) => {
             console.timeEnd('Haversine formula execution time');
             if (error) throw error;
@@ -32,7 +33,7 @@ router.get('', (request, response) => {
 });
 
 router.post('', (request, response) => {
-    const neededFields = ['latitude', 'longitude', 'comment', 'flag'];
+    const neededFields = ['latitude', 'longitude', 'comment', 'flag', 'username'];
     for (const neededField of neededFields) {
         if (!request.body[neededField]) {
             response.status(401).json(`You need to provide the following field: ${neededField}`);
@@ -69,8 +70,8 @@ router.post('', (request, response) => {
 
     FileSystem.writeFileSync(fileName, data);
 
-    let sql = 'INSERT INTO trash(trashID, imagePath, latitude, longitude, comment, flag) ' +
-              'VALUES(null, ?, ?, ?, ?, ?)';
+    let sql = 'INSERT INTO trash(trashID, imagePath, latitude, longitude, comment, flag, username) ' +
+              'VALUES(null, ?, ?, ?, ?, ?, ?)';
 
     let parameters = [
         filePath,
@@ -78,7 +79,8 @@ router.post('', (request, response) => {
         request.body.latitude,
         request.body.longitude,
         request.body.comment,
-        request.body.flag
+        request.body.flag,
+        request.body.username
     ];
 
     DatabaseHandler.getDatabase().query(sql, parameters, (error) => {
