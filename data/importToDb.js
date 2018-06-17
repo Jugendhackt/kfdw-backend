@@ -11,7 +11,7 @@ DatabaseManager.establishConnection().then(() => {
         DatabaseManager.getDatabase().beginTransaction();
 
         // FIXME: The driver does not support prepared statements, yet. Rewrite once it is supported.
-        const rawData = require('./rawData-frankfurt.geo');
+        const rawData = require('./rawData-final.geo');
         DatabaseManager.getDatabase().query('-- TRUNCATE TABLE trash_bins;', err => {
             console.log('Truncated table');
             if (err) throw err;
