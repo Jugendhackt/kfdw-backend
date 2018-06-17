@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jugendhackt/kfdw-backend.git"
+    "url": "git+https://github.com/Jugendhackt/mcdwv-backend.git"
   },
   "author": "Jens Hausdorf",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jugendhackt/kfdw-backend/issues"
+    "url": "https://github.com/Jugendhackt/mcdwv-backend/issues"
   },
-  "homepage": "https://github.com/Jugendhackt/kfdw-backend#readme",
+  "homepage": "https://github.com/Jugendhackt/mcdwv-backend#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "dataurl": "^0.1.0",
