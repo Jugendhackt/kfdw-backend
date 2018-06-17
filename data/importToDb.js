@@ -1,6 +1,6 @@
 (require('dotenv').config());
 
-const DatabaseManager = new (require('../src/database'));
+const DatabaseManager = (require('../src/database')).getInstance();
 const os = require('os');
 
 console.time('db connection');
@@ -29,8 +29,7 @@ DatabaseManager.establishConnection().then(() => {
                     if (++successfulRequests === rawData.elements.length) {
                         process.stdout.write(os.EOL);
                         console.timeEnd('import');
-                        DatabaseManager.getDatabase().commit();
-                        process.exit();
+                        DatabaseManager.getDatabase().commit(() => process.exit());
                     }
                     if (successfulRequests % 5 === 0) {
                         process.stdout.write('.');
