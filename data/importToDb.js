@@ -1,24 +1,8 @@
 (require('dotenv').config());
-const argparse = require('argparse');
-var parser = new argparse.ArgumentParser({
-  version: '0.0.1',
-  addHelp:true,
-  description: 'KFDW Importer'
-})
-
-parser.addArgument(
-  [ '-t', '--truncate' ],
-  {
-    help: 'Truncate table before importing'
-  }
-);
-
 
 let truncateTable = false
 
-const args = parser.parseArgs()
-
-if(args.truncate != null && args.truncate == 'true') {
+if(process.args.includes(' --truncate')) {
   truncateTable = true
 }
 
