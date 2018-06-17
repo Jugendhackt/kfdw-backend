@@ -20,7 +20,7 @@ router.get('', (request, response) => {
              'FROM trash_bins ' +
              'HAVING distance_in_m <= ? ' +
              'ORDER BY distance_in_m ASC '+
-             'LIMIT 1000';
+             'LIMIT 500';
         let parameters = [latitude, longitude, latitude, Number.parseFloat(process.env.DISTANCE_THRESHOLD)];
         DatabaseHandler.getDatabase().query(sql, parameters, (error, results) => {
             console.timeEnd('Haversine formula execution time');
