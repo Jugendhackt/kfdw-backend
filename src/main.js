@@ -42,7 +42,7 @@ app.use((request, response, next) => {
 
     // log the request
     ServerLogger.log(
-        `New ${request.method} request on ${request.path} from ip ${request.ip} at ${new Date().toLocaleTimeString()} (${ipAddressesToCount.get(request.ip)} time(s))`
+        `New ${request.method} request on ${request.originalUrl} from ip ${request.ip} at ${new Date().toLocaleTimeString()} (${ipAddressesToCount.get(request.ip)} time(s))`
     );
     next();
 });
