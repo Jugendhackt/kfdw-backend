@@ -1,3 +1,6 @@
+# Ignore final geo file because it's only a duplicate
+data/rawData-final.geo.json
+
 # Only keep yarn lock
 package-lock.json
 
