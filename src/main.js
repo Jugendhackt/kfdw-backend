@@ -20,6 +20,7 @@ DatabaseManager.establishConnection();
 
 // init webserver
 const app = express();
+app.disable('x-powered-by');
 
 /**
  * @type Map<string,int>
