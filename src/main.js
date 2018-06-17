@@ -15,6 +15,9 @@ const ScoreRouteHandler = require('./routes/score');
 
 MainLogger.log(`${require('../package').name} started at ${new Date().toLocaleTimeString()}`);
 
+// set port for compatibility with hosters like heroku
+const PORT = process.env.PORT || 8080
+
 // establish database connection
 DatabaseManager.establishConnection();
 
@@ -58,7 +61,7 @@ app.use('/', (request, response) => {
     });
 });
 
-const runningInstance = app.listen(8080, () => {
+const runningInstance = app.listen(PORT, () => {
     ServerLogger.log(`Server is listening on port ${runningInstance.address().port}`);
 });
 
