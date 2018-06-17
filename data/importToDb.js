@@ -34,9 +34,9 @@ DatabaseManager.establishConnection().then(() => {
 
         // FIXME: The driver does not support prepared statements, yet. Rewrite once it is supported.
         const rawData = require('./rawData-final.geo');
-        let prefix = '';
+        let prefix = '-- ';
         if(truncateTable) {
-          prefix = '-- '
+          prefix = ''
         }
         DatabaseManager.getDatabase().query(`${prefix}TRUNCATE TABLE trash_bins;`, err => {
             if(truncateTable) {
