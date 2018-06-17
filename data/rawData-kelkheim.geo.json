@@ -1,0 +1,210 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.55.3 9da5e7ae",
+  "osm3s": {
+    "timestamp_osm_base": "2018-06-17T20:13:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1509771194,
+  "lat": 50.1496898,
+  "lon": 8.4358798,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 2990743008,
+  "lat": 50.1291106,
+  "lon": 8.4498645,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 2990743009,
+  "lat": 50.1297762,
+  "lon": 8.4498798,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3123924726,
+  "lat": 50.1250619,
+  "lon": 8.4617843,
+  "tags": {
+    "amenity": "vending_machine",
+    "fee": "no",
+    "vending": "excrement_bags"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163025,
+  "lat": 50.1420865,
+  "lon": 8.4867921,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163026,
+  "lat": 50.1440210,
+  "lon": 8.4855818,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163029,
+  "lat": 50.1450910,
+  "lon": 8.4852805,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163031,
+  "lat": 50.1461272,
+  "lon": 8.4840962,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163034,
+  "lat": 50.1473354,
+  "lon": 8.4825878,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163037,
+  "lat": 50.1480684,
+  "lon": 8.4816997,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163038,
+  "lat": 50.1489561,
+  "lon": 8.4808014,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163041,
+  "lat": 50.1498285,
+  "lon": 8.4805829,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3617163044,
+  "lat": 50.1507051,
+  "lon": 8.4808186,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3620722176,
+  "lat": 50.1436090,
+  "lon": 8.4809771,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3620722179,
+  "lat": 50.1442903,
+  "lon": 8.4865866,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 3620722183,
+  "lat": 50.1433141,
+  "lon": 8.4874450,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 5383569923,
+  "lat": 50.1519518,
+  "lon": 8.4222054,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 5383569926,
+  "lat": 50.1522338,
+  "lon": 8.4232144,
+  "tags": {
+    "amenity": "vending_machine",
+    "bin": "no",
+    "fee": "no",
+    "vending": "excrement_bags"
+  }
+},
+{
+  "type": "node",
+  "id": 5383574913,
+  "lat": 50.1518856,
+  "lon": 8.4223080,
+  "tags": {
+    "amenity": "vending_machine",
+    "bin": "no",
+    "fee": "no",
+    "vending": "excrement_bags"
+  }
+},
+{
+  "type": "node",
+  "id": 5695524032,
+  "lat": 50.1345390,
+  "lon": 8.4532511,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+},
+{
+  "type": "node",
+  "id": 5695527786,
+  "lat": 50.1395162,
+  "lon": 8.4548244,
+  "tags": {
+    "amenity": "waste_basket"
+  }
+}
+
+  ]
+}
+
