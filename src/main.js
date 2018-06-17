@@ -52,6 +52,12 @@ app.use('/trashcans', TrashcanRouteHandler);
 app.use('/trash', TrashRouteHandler);
 app.use('/score', ScoreRouteHandler);
 
+app.use('/', (request, response) => {
+    response.json({
+        message: 'It workz :P'
+    });
+});
+
 const runningInstance = app.listen(8080, () => {
     ServerLogger.log(`Server is listening on port ${runningInstance.address().port}`);
 });
