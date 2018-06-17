@@ -1,4 +1,26 @@
 (require('dotenv').config());
+const argparse = require('argparse');
+var parser = new argparse.ArgumentParser({
+  version: '0.0.1',
+  addHelp:true,
+  description: 'KFDW Importer'
+})
+
+parser.addArgument(
+  [ '-t', '--truncate' ],
+  {
+    help: 'Truncate table before importing'
+  }
+);
+
+
+let truncateTable = false
+
+const args = parser.parseArgs()
+
+if(args.truncate != null && args.truncate == 'true') {
+  truncateTable = true
+}
 
 const DatabaseManager = (require('../src/database')).getInstance();
 const os = require('os');
@@ -12,8 +34,16 @@ DatabaseManager.establishConnection().then(() => {
 
         // FIXME: The driver does not support prepared statements, yet. Rewrite once it is supported.
         const rawData = require('./rawData-final.geo');
-        DatabaseManager.getDatabase().query('-- TRUNCATE TABLE trash_bins;', err => {
-            console.log('Truncated table');
+        let prefix = '';
+        if(truncateTable) {
+          prefix = '-- '
+        }
+        DatabaseManager.getDatabase().query(`${prefix}TRUNCATE TABLE trash_bins;`, err => {
+            if(truncateTable) {
+              console.log('Truncated table')
+            } else {
+              console.log('Skipped table truncating')
+            }
             if (err) throw err;
             const sql = 'INSERT IGNORE INTO trash_bins(trashBinID, latitude, longitude, data) VALUES (null, ?, ?, ?);';
 
