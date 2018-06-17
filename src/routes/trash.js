@@ -28,7 +28,7 @@ router.get('', (request, response) => {
             response.json(results);
         });
     } else {
-        response.status(401).json('You need to provide your current position.');
+        response.status(400).json('You need to provide your current position.');
     }
 });
 
@@ -36,7 +36,7 @@ router.post('', (request, response) => {
     const neededFields = ['latitude', 'longitude', 'comment', 'flag', 'username'];
     for (const neededField of neededFields) {
         if (!request.body[neededField]) {
-            response.status(401).json(`You need to provide the following field: ${neededField}`);
+            response.status(400).json(`You need to provide the following field: ${neededField}`);
             return;
 
         // transform field to matching format
@@ -49,7 +49,7 @@ router.post('', (request, response) => {
 
     // validate image
     if (!request.body.image) {
-        response.status(401).json('You need to provide an image');
+        response.status(400).json('You need to provide an image');
         return;
     }
 
@@ -58,7 +58,7 @@ router.post('', (request, response) => {
     const { mimetype, charset, data } = RealFile;
     /** @type {string} mimetype */
     if (!mimetype.startsWith('image/')) {
-        response.status(401).json('You need to provide an image');
+        response.status(400).json('You need to provide an image');
         return;
     }
 

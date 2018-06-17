@@ -28,7 +28,7 @@ router.get('', (request, response) => {
             response.json(results);
         });
     } else {
-        response.status(401).json('You need to provide your current position.');
+        response.status(400).json('You need to provide your current position.');
     }
 });
 
