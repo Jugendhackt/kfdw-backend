@@ -1,7 +1,7 @@
 {
-  "name": "kfdw-backend",
+  "name": "mcdwv-backend",
   "version": "1.0.0",
-  "description": "Backend for \"Kot für die Welt\"",
+  "description": "Backend for \"Mit Kot die Welt verbessern\"",
   "main": "src/main.js",
   "scripts": {
     "start": "node src/main.js",

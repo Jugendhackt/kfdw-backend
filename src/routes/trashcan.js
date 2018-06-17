@@ -5,7 +5,7 @@ const ServerLogger = require('../logger').getInstance('Server');
 
 router.get('', (request, response) => {
     if (request.query.position) {
-        ServerLogger.log('Preparing and doing heavy calculation stuff…')
+        ServerLogger.log('Preparing and doing heavy calculation stuff…');
         console.time('Haversine formula execution time');
         const [latitude, longitude] = request.query.position.split(',', 2).map(x => Number.parseFloat(x));
 
