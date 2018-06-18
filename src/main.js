@@ -14,7 +14,7 @@ const TrashcanRouteHandler = require('./routes/trashcan');
 const ScoreRouteHandler = require('./routes/score');
 
 // Use environment port specification if set; if not, use port 8080 (makes app compatible with heroku)
-const PORT = process.env.PORT || 8080
+const PORT = Number.parseInt(process.env.PORT) || 8080
 
 MainLogger.log(`${require('../package').name} started at ${new Date().toLocaleTimeString()}`);
 
