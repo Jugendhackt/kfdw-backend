@@ -13,6 +13,9 @@ const TrashRouteHandler = require('./routes/trash');
 const TrashcanRouteHandler = require('./routes/trashcan');
 const ScoreRouteHandler = require('./routes/score');
 
+// Use environment port specification if set; if not, use port 8080 (makes app compatible with heroku)
+const PORT = Number.parseInt(process.env.PORT) || 8080
+
 MainLogger.log(`${require('../package').name} started at ${new Date().toLocaleTimeString()}`);
 
 // establish database connection
@@ -58,7 +61,7 @@ app.use('/', (request, response) => {
     });
 });
 
-const runningInstance = app.listen(8080, () => {
+const runningInstance = app.listen(PORT, () => {
     ServerLogger.log(`Server is listening on port ${runningInstance.address().port}`);
 });
 
