@@ -25,6 +25,7 @@ router.get('', (request, response) => {
             console.timeEnd('Haversine formula execution time');
             if (error) throw error;
             response.json(results);
+            ServerLogger.log(`Sent ${results.length} results.`);
         });
     } else {
         response.status(400).json('You need to provide your current position.');
