@@ -9,12 +9,13 @@ let INSTANCE = null;
 
 class DatabaseManager {
 
-    constructor() {
+    constructor(liveOptions = {verbose: true}) {
         INSTANCE = this;
         this.host = process.env.MYSQL_HOST;
         this.user = process.env.MYSQL_USER;
         this.password = process.env.MYSQL_PASSWORD;
         this.database = process.env.MYSQL_DATABASE;
+        this.liveOptions = liveOptions;
 
         if (this.host === void 0 || this.user === void 0 || this.password === void 0 || this.database === void 0) {
             DatabaseLogger.warn('One or more values are undefined, please check that they are defined in the .env file');
@@ -38,7 +39,9 @@ class DatabaseManager {
                     reject(err);
                     return;
                 }
-                DatabaseLogger.log(`Successfully established connection to database at ${new Date().toLocaleTimeString()}.`);
+                if (this.liveOptions.verbose) {
+                    DatabaseLogger.log(`Successfully established connection to database at ${new Date().toLocaleTimeString()}.`);
+                }
                 resolve();
             });
         });
@@ -57,9 +60,35 @@ class DatabaseManager {
         });
     }
 
-    static getInstance() {
+    beginTransactionPromisify() {
+        return new Promise((resolve, reject) => {
+            this.getDatabase().beginTransaction(null, err => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+
+                resolve();
+            })
+        });
+    }
+
+    commitPromisify() {
+        return new Promise((resolve, reject) => {
+            this.getDatabase().commit(null, err => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+
+                resolve();
+            })
+        });
+    }
+
+    static getInstance(...args) {
         if (INSTANCE === null) {
-            INSTANCE = new DatabaseManager;
+            INSTANCE = new DatabaseManager(args);
         }
 
         return INSTANCE;
