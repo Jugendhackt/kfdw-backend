@@ -16,7 +16,7 @@ env:
     
 matrix:
   allow_failures:
-    - env: NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly
+    - env: NODE_ENV=test NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly
     
 install:
   - yarn install
