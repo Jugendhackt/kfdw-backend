@@ -32,7 +32,18 @@ install:
 script:
   - ./script/citest.sh
 
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+
 before_install:
   - cp .env-travis .env
-  - mysql -e "CREATE TABLE `test`.`trash_bins`( `trashBinID` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT, `latitude` FLOAT(10,6) UNSIGNED NOT NULL, `longitude` FLOAT(10,6) UNSIGNED NOT NULL, `data` LONGTEXT NOT NULL COLLATE 'utf8mb4_bin', PRIMARY KEY (`trashBinID`), UNIQUE INDEX `latitude_longitude` (`latitude`, `longitude`)) COLLATE='utf8_general_ci' ENGINE=InnoDB ;"
-  - mysql -e "CREATE TABLE `test`.`trash`( `trashID` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT, `imagePath` VARCHAR(65) NOT NULL DEFAULT '0', `latitude` FLOAT(10,6) UNSIGNED NOT NULL DEFAULT '0', `longitude` FLOAT(10,6) UNSIGNED NOT NULL DEFAULT '0', `comment` TINYTEXT NOT NULL, `flag` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0', `username` VARCHAR(50) NOT NULL, `isDisabled` TINYINT(1) UNSIGNED NULL DEFAULT NULL, PRIMARY KEY (`trashID`)) COLLATE='utf8_general_ci' ENGINE=InnoDB ;"
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('kfdw') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade
+  - sudo service mysql restart
+  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+  - sudo mysql -e < source data/database.sql
