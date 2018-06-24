@@ -22,6 +22,7 @@ const areaToAreaID = new Map([
 ]);
 
 let selectedArea = null;
+let selectedAreaName = null;
 
 const argv = process.argv.map(x => x.toLowerCase());
 
