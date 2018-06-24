@@ -4,15 +4,18 @@ node_js:
   
 os:
   - linux
-  - osx
   
 env:
   - NODE_ENV=test
     JSONSYN_ENV=debug
+  - NODE_ENV=development
+    JSONSYN_ENV=debug
+  - NODE_ENV=production
+    JSONSYN_ENV=debug
     
 matrix:
   allow_failures:
-    - env: NODE_ENV=test JSONSYN_ENV=debug NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly
+    - env: NODE_ENV=development JSONSYN_ENV=debug
     
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
