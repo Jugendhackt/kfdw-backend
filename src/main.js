@@ -45,7 +45,7 @@ app.use((request, response, next) => {
     ipAddressesToCount.set(request.ip, ++counter);
 
     // log the request
-    ServerLogger.log(
+    MainLogger.log(
         `New ${request.method} request on ${request.originalUrl} from ip ${request.ip} at ${new Date().toLocaleTimeString()} (${ipAddressesToCount.get(request.ip)} time(s))`
     );
     next();
