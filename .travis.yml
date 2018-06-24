@@ -1,17 +1,14 @@
 language: node_js
 node_js:
-  - "8"
   - "10"
   
 os:
   - linux
+  - osx
   
 env:
   - NODE_ENV=test
     JSONSYN_ENV=debug
-  - NODE_ENV=test
-    JSONSYN_ENV=debug
-    NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly
     
 matrix:
   allow_failures:
