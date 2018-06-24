@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "8"
+  - "6"
+  - "7"
+  - "10"
+  
+os:
+  - linux
+  - osx
+  
+env:
+  - NODE_ENV=test
+  - NODE_ENV=test
+    NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly
+    
+matrix:
+  allow_failures:
+    - env: NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly
+    
+install:
+  - yarn install
+  - yarn global add jsonsyn
+  - chmod +x script/citest.sh
+  
+script:
+  - ./script/citest.sh
