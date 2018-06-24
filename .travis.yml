@@ -27,6 +27,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list    ; fi
   - yarn install
   - yarn global add jsonsyn
+  - yarn global add grunt-cli
   - chmod +x script/citest.sh
   
 script:

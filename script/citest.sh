@@ -1,1 +1,2 @@
 jsonsyn
+grunt jshint
