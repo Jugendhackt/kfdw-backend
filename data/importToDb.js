@@ -25,7 +25,7 @@ let selectedArea = null;
 
 const argv = process.argv.map(x => x.toLowerCase());
 
-for (const area of Array.from(areaToAreaID.keys())) {
+for (const area of areaToAreaID.keys()) {
     if (argv.includes(`area=${area.toLowerCase()}`)) {
         selectedArea = new Area(areaToAreaID.get(area));
         selectedAreaName = area;
