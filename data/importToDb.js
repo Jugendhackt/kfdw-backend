@@ -18,7 +18,7 @@ const areaToAreaID = new Map([
     ['Hessen', 62650]
 
     // the hole country. EXPERIMENTAL
-    // ['germany', 51477]
+    ['Germany', 51477]
 ]);
 
 let selectedArea = null;
