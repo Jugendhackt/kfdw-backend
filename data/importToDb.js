@@ -15,7 +15,7 @@ const areaToAreaID = new Map([
     // state of Hamburg
     ['Hamburg', 62782],
     // state of Hessen
-    ['Hessen', 62650]
+    ['Hessen', 62650],
 
     // the hole country. EXPERIMENTAL
     ['Germany', 51477]
