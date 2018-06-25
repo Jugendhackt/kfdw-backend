@@ -45,3 +45,4 @@ before_install:
   - sudo service mysql restart
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
   - sudo mysql test < data/database.sql
+  - sudo mysql -e 'use test; TRUNCATE TABLE `trash_bins`; TRUNCATE_TABLE `trash`;'
