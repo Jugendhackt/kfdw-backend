@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/main.js",
     "import": "node data/importToDb.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sh script/citest.sh"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,23 @@
     "dataurl": "^0.1.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "jsonsyn": "^1.1.0",
     "mysql": "github:mysqljs/mysql",
     "node-fetch": "^2.6.1",
     "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "grunt": "^1.0.3",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-eslint": "^21.0.0",
+    "grunt-nsp": "^2.3.1",
+    "load-grunt-tasks": "^4.0.0",
+    "nsp": "^3.2.1"
   }
 }

@@ -1,22 +1,21 @@
 language: node_js
 node_js:
-  - "8"
-  - "6"
-  - "7"
   - "10"
   
 os:
   - linux
-  - osx
   
 env:
   - NODE_ENV=test
-  - NODE_ENV=test
-    NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly
+    JSONSYN_ENV=debug
+  - NODE_ENV=development
+    JSONSYN_ENV=debug
+  - NODE_ENV=production
+    JSONSYN_ENV=debug
     
 matrix:
   allow_failures:
-    - env: NODE_ENV=test NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly
+    - env: NODE_ENV=development JSONSYN_ENV=debug
     
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
@@ -25,7 +24,25 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list    ; fi
   - yarn install
   - yarn global add jsonsyn
+  - yarn global add grunt-cli
   - chmod +x script/citest.sh
   
 script:
   - ./script/citest.sh
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+
+before_install:
+  - cp .env-travis .env
+  - #sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('kfdw') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - #sudo mysql_upgrade
+  - sudo service mysql restart
+  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+  - sudo mysql test < data/database.sql
+  - sudo mysql -e 'use test; TRUNCATE TABLE `trash_bins`; TRUNCATE TABLE `trash`;'

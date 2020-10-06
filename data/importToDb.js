@@ -15,10 +15,10 @@ const areaToAreaID = new Map([
     // state of Hamburg
     ['Hamburg', 62782],
     // state of Hessen
-    ['Hessen', 62650]
+    ['Hessen', 62650],
 
     // the hole country. EXPERIMENTAL
-    // ['germany', 51477]
+    ['Germany', 51477]
 ]);
 
 let selectedArea = null;
